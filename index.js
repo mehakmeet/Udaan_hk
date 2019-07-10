@@ -13,6 +13,8 @@ const logger=(req,res,next)=>{
 
 app.use(logger);
 
+app.use(express.static(path.join(__dirname,'public')));
+
 //GET 1st aPI
 app.get('/assets/all', (req,res) => {
 
@@ -117,25 +119,8 @@ app.post('/allocate-task',(req,res)=>{
 	tasks.push(newTask);
 	res.json(tasks);
 });
-var mydat;
-fs.readFile('Asset.json', (err, data) => {  
-    if (err) throw err;
-    mydat = JSON.parse(data);
-});
-
-let student = {  
-   "assestId":1,
-   "name":"dishwasher"
-};
-
-let data = JSON.stringify(student);  
-fs.writeFileSync('Asset.json', data);  
-
-
-
-console.log('This is after the read call');  
 
 const PORT= process.env.PORT || 5000;
 
 
-app.listen(PORT,()=> console.log('Listening on port ${PORT}'));
+app.listen(PORT,()=> console.log(`Listening on port ${PORT}`));
