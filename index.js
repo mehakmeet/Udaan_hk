@@ -112,10 +112,7 @@ app.post('/allocate-task',(req,res)=>{
 		taskToBePerformedBy: req.body.tasktoPerform,
 	};
 
-	if(!newTask.assestId || !newTask.workerId || !newTask.timeOfAllocation || !newTask.taskToBePerformedBy)
-	{
-		return res.status(400).json({msg:'Please include description of the task'});
-	}
+	
 
 	tasks.push(newTask);
 	res.json(tasks);
